@@ -24,10 +24,10 @@ const DisplayTodos = (props) => {
   const [sort, setSort] = useState("active");
 
   return (
-    <div className="displaTodos">
+    <div className="displayTodos">
         <div className="buttons">
             <button onClick={() => setSort("active")}>Ativo</button>
-            <button onClick={() => setSort("complete")}>Completo</button>
+            <button onClick={() => setSort("complete")}>Feito</button>
             <button onClick={() => setSort("all")}>Todos</button>
         </div>
         <ul>
@@ -44,6 +44,32 @@ const DisplayTodos = (props) => {
                   />
                 )
               )
+          }) : null}
+           {props.todos.length > 0 && sort === "complete"
+            ? props.todos.map((item) => {
+              return (
+                  item.completed === true && (
+                  <TodoItem
+                    key={item.id}
+                    item={item}
+                    delTodo={props.delTodo}
+                    updateTodo={props.updateTodo}
+                    completeTodo={props.completeTodo}
+                  />
+                )
+              )
+          }) : null}
+           {props.todos.length > 0 && sort === "all"
+            ? props.todos.map((item) => {
+              return (
+                  <TodoItem
+                    key={item.id}
+                    item={item}
+                    delTodo={props.delTodo}
+                    updateTodo={props.updateTodo}
+                    completeTodo={props.completeTodo}
+                  />
+                 )
           }) : null}
         </ul>
     </div>

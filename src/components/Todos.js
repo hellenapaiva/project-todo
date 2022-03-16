@@ -36,7 +36,7 @@ const Todos = (props) => {
             item: todo,
             completed: false
           }
-        )}>Add</button>
+        )}>+</button>
         <br/>
        
     </div>
