@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { addTodos, removeTodos } from '../redux/reducer';
-
+import { addTodos } from '../redux/reducer';
 
 const mapStateToProps = (state) => {
   return {
     todos: state,
-  }
-}
+  };
+};
 
-const MapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    addTodo: (todo) => dispatch(addTodos(todo)),
-    delTodo: (id) => dispatch(removeTodos(id))
-  }
-}
+    addTodo: (obj) => dispatch(addTodos(obj)),
+  };
+};
 
 const Todos = (props) => {
 
@@ -23,10 +21,6 @@ const Todos = (props) => {
   const handleChange = (e) => {
     setTodo(e.target.value);
   }
-
-  console.log("Props", props)
-
-  console.log("todo", todo)
 
   return (
     <div className="addTodos"> 
@@ -37,26 +31,16 @@ const Todos = (props) => {
         />
 
         <button className="add-btn" onClick={() => 
-        props.addTodo({         
+          props.addTodo({         
             id: Math.floor(Math.random() * 1000),
             item: todo,
             completed: false
           }
         )}>Add</button>
         <br/>
-        <ul>
-          {
-            props.todos.map(item => {
-              return (
-                <li key={item.id}>
-                  {item.item}
-                  <button onClick={() => props.delTodo(item.id)}>Delete</button>
-                </li>
-              )}
-            )}
-        </ul>
+       
     </div>
   )
 }
 
-export default connect(mapStateToProps, MapDispatchToProps)(Todos);
+export default connect(mapStateToProps, mapDispatchToProps)(Todos);
