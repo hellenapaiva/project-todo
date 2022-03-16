@@ -152,6 +152,7 @@ body {
   position: absolute;
   bottom: 1rem;
   right: 1rem;
+  top: 4.2rem;
 }
 
 .card .btns button {
@@ -162,6 +163,7 @@ body {
   cursor: pointer;
   color: #271c6c;
   background-color: transparent;
+  margin-top: 1.4rem;
 }
 
 .card .btns button:focus {
